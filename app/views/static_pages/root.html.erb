@@ -1,5 +1,7 @@
 
 <script type="text/javascript">
+  <% if logged_in? %>
     window.currentUser = <%= current_user.id %>
+  <% end %>
 </script>
 <main id="root"></main>
