@@ -32,7 +32,9 @@ gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'jquery-rails'
-
+gem "paperclip", '~> 5.0.0'
+gem 'figaro'
+gem 'aws-sdk', '< 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

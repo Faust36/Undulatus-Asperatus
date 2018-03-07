@@ -6,5 +6,7 @@ class Track < ApplicationRecord
   class_name: 'User',
   primary_key: :id
 
-  
+  has_attached_file :artwork
+  validates_attachment_content_type :artwork, content_type: /\Aimage\/.*\z/
+
 end

@@ -8,6 +8,12 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_attached_file :avatar
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  has_attached_file :banner
+  validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
+
+
 
   def password=(password)
     @password = password
