@@ -1,11 +1,13 @@
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const RECEIVE_NULL_USER = 'RECEIVE_NULL_USER';
 import * as SessionApiUtil from '../util/session_api_util';
 
-export const receiveCurrentUser = (user) =>{
+export const receiveCurrentUser = ({user, tracks}) =>{
   return {
     type: RECEIVE_CURRENT_USER,
-    userId: user.id
+    user,
+    tracks
   };
 };
 
@@ -16,20 +18,27 @@ export const receiveErrors = errors => {
   };
 };
 
+export const receiveNullUser = () =>{
+  return{
+    type: RECEIVE_NULL_USER
+  }
+}
+
 export const login = (user) => (dispatch) => {
   return SessionApiUtil.login(user).then(
-    (user) => (dispatch(receiveCurrentUser(user))),
+    (payload) => (dispatch(receiveCurrentUser(payload))),
     (err) => (dispatch(receiveErrors(err.responseJSON))));
 };
 
 export const signup = (user) => (dispatch) => {
   return SessionApiUtil.signup(user).then(
-    (user) => (dispatch(receiveCurrentUser(user))),
-    (err) => (dispatch(receiveErrors(err.responseJSON))));
+    (payload) => (dispatch(receiveCurrentUser(payload))),
+    (err) => (dispatch(receiveErrors(err.responseJSON)))
+  );
 };
 
 export const logout = () => (dispatch) => {
-  return SessionApiUtil.logout().then((user)=>{
-    return dispatch(receiveCurrentUser(null));
+  return SessionApiUtil.logout().then(()=>{
+    return dispatch(receiveNullUser());
   });
 };

@@ -2,20 +2,27 @@ import { login } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import React from 'react';
 import SessionForm from './session_form';
-import { Link } from 'react-router-dom';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { clearErrors } from '../../actions/errors_actions';
 
 const mapStateToProps = ({errors})=>{
   return {
     errors: errors.session,
-    formType: 'Sign In',
-    navLink: <Link to='/signup'>Create Account</Link>
+    formType: 'Login',
   }
 }
 
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-    submitForm: (user) => dispatch(login(user))
+    submitForm: (user) => dispatch(login(user)),
+    clearErrors: () => dispatch(clearErrors()),
+    otherForm: (
+      <button className="other-form" onClick={() => dispatch(openModal('signup'))}>
+        Signup
+      </button>
+    ),
+    closeModal: () => dispatch(closeModal())
   }
 }
 

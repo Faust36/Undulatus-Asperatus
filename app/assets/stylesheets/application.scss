@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+//CSS Reset
+@import 'base/reset.scss';
+
+//Core
+
+//Components
+@import "components/**/*";
+
+
+
+
+.main-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #333;
+  height: 46px;
+}
+
+.session-nav{
+  display: flex;
+}
+
+.nav-button-orange{
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 2px 11px 2px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 100;
+  text-align: center;
+  background-color: #f50;
+  border-color: #f50;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  height: 26px;
+  width: 100%;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+.login-button{
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 2px 11px 2px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 100;
+  text-align: center;
+  background-color: transparent;
+  border-color: #666;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  height: 26px;
+  width: 100%;
+  text-align: center;
+  vertical-align: baseline;
+}
+
+
+.header-logo{
+  margin-left: 20px;
+  background: linear-gradient(#f70, #f30);
+  text-decoration: none;
+  color: #fff;
+  width: 184px;
+  height: 46px;
+  text-align: center;
+}
+
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

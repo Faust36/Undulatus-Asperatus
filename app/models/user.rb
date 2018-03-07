@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :tracks
+  has_many :tracks, foreign_key: :artist_id
 
   after_initialize :ensure_session_token
 

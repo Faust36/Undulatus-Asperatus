@@ -11,23 +11,27 @@ class SessionForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors()
+  }
+
   update(field){
     return (e) => {
-      this.setState({[field]: e.target.value});
+      this.setState({[field]: e.currentTarget.value});
     };
   }
 
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.submitForm(user);
+    this.props.submitForm(user).then(this.props.closeModal);
   }
 
   renderErrors(){
     return (
       <ul>
         {this.props.errors.map((error, i)=>{
-          return <li key={i}>{error}</li>;
+          return <li key={`error-${i}`}>{error}</li>;
         })}
       </ul>
     );
@@ -35,31 +39,34 @@ class SessionForm extends React.Component{
 
   render(){
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          Welcome to Undulatus Asperatus!
-          <br/>
-          Please {this.props.formType} or {this.props.navLink}
+      <div className="login-form-container">
+        <div onClick={this.props.closeModal} className="close-x">X</div>
+        <form onSubmit={this.handleSubmit} className="login-form">
+          <div className="login-form-header">
+              <div><h1>{this.props.formType}</h1></div>
+              <div><h2>or</h2></div>
+              <div>{this.props.otherForm}</div>
+          </div>
           {this.renderErrors()}
-          <div>
+          <div className="login-form-input">
             <br/>
-            <label>Please Enter a Username
               <input
                 type='text'
                 value={this.state.username}
                 onChange={this.update('username')}
+                className="login-input"
+                placeholder="Your Username"
               />
-            </label>
             <br/>
-            <label>Please Enter a Password (At Least 6 Characters!)
               <input
                 type='password'
                 value={this.state.password}
                 onChange={this.update('password')}
+                className= "login-input"
+                placeholder="Your Password (At least 6 characters)"
               />
-            </label>
             <br/>
-            <input type='submit' value={this.props.formType}/>
+            <button className="login-submit" type='submit' value={this.props.formType}>{this.props.formType}</button>
           </div>
         </form>
       </div>
