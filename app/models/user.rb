@@ -8,9 +8,9 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_attached_file :avatar
+  has_attached_file :avatar, default_url: "/images/user_avatar.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  has_attached_file :banner
+  has_attached_file :banner, default_url: "/images/user_banner.jpg"
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
 

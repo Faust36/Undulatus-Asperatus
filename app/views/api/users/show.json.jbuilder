@@ -1,7 +1,7 @@
 json.user do
   json.extract! @user, :id, :username, :city, :country, :bio, :first_name, :last_name
-  # json.banner_url asset_path(@user.banner_url)
-  # json.thumbnail_url asset_path(@user.thumbnail_url)
+  json.avatar_url asset_path(@user.avatar.url(:original))
+  json.banner_url asset_path(@user.banner.url(:original))
   json.trackIds @user.track_ids
 end
 json.tracks do

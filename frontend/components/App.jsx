@@ -4,6 +4,7 @@ import GreetingContainer from './greeting/greeting_container';
 import {Link, Route, Switch} from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import TrackIndexContainer from './tracks/track_index_container';
 
 const App = () =>{
   return(
@@ -17,8 +18,11 @@ const App = () =>{
           <GreetingContainer/>
         </div>
       </header>
+
+      <img className="banner" src={window.banner}/>
+      <TrackIndexContainer/>
     </div>
   );
 };
 
-export default App
+export default App;

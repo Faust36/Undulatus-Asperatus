@@ -89,6 +89,23 @@
 
 .app{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.banner{
+  height: 454px;
+  width: 1240px;
+  object-fit: cover;
+}
+
+.scrolling-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.box{
+  flex: 0 0 auto;
 }
