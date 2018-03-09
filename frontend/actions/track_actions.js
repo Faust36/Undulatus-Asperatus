@@ -11,10 +11,11 @@ export const receiveAllTracks = (tracks) =>{
   };
 };
 
-export const receiveTrack = (track) => {
+export const receiveTrack = ({track, user}) => {
   return {
     type: RECEIVE_TRACK,
-    track
+    track,
+    user 
   };
 };
 
@@ -41,7 +42,7 @@ export const fetchAllTracks = () => (dispatch) => {
 
 export const fetchTrack = (id) => (dispatch) => {
   return TrackApiUtil.fetchTrack(id).then(
-    (track) => dispatch(receiveTrack(track)),
+    (payload) => dispatch(receiveTrack(payload)),
     (err) => dispatch(receiveTrackErrors(err.responseJSON))
   );
 };

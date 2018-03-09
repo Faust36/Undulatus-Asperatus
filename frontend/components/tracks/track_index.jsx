@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import TrackIndexItem from './track_index_item';
+import TrackIndexList from './track_index_list';
 
 class TrackIndex extends React.Component {
 
@@ -9,12 +9,9 @@ class TrackIndex extends React.Component {
   }
 
   render(){
-    const tracks = this.props.tracks.map((track)=>{
-      return <TrackIndexItem key={track.id} track={track}/>;
-    });
-    return (
-      <div className="scrolling-wrapper">
-        {tracks}
+    return(
+      <div className="main-container-left">
+        <TrackIndexList tracks={this.props.tracks}/>
       </div>
     );
   }

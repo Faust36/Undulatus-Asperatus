@@ -1,0 +1,32 @@
+.track-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.track-banner{
+  width: 1240px;
+  height: 380px;
+  display: flex;
+  background: linear-gradient(#3BC3C3,#033939);
+  align-items: center;
+}
+
+.track-art{
+  object-fit: cover;
+  height: 340px;
+  width:340px;
+}
+
+.track-body-artist{
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  height: 250px;
+}
+
+.artist-port{
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}

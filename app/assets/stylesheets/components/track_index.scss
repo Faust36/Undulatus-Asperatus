@@ -1,0 +1,33 @@
+.scrolling-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.box{
+  flex: 0 0 auto;
+}
+
+.track-list-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.track-list-image{
+  height: auto;
+  width: auto;
+  max-width: 200px;
+  max-height: 200px;
+}
+.track-list-title{
+  text-decoration: none;
+  font-size: 14px;
+  width: 100%;
+  line-height: 1.4;
+}
+
+.track-list-genre{
+  font-weight: 100;
+  color: #999;
+}
