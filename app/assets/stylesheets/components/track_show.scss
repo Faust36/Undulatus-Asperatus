@@ -6,15 +6,18 @@
 .track-banner{
   width: 1240px;
   height: 380px;
-  display: flex;
+  position: relative;
   background: linear-gradient(#3BC3C3,#033939);
-  align-items: center;
+
 }
 
 .track-art{
   object-fit: cover;
   height: 340px;
   width:340px;
+  position: absolute;
+  right: 2%;
+  top: 5%
 }
 
 .track-body-artist{
@@ -29,4 +32,15 @@
   width: 120px;
   height: 120px;
   object-fit: cover;
+}
+
+.track-genre{
+  position: absolute;
+  border-radius: 35%;
+  background: gray;
+  color: white;
+  right: 31%;
+  top: 10%;
+  padding: 2px 5px 2px 5px;
+
 }

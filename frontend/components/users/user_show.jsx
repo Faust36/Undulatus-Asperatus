@@ -22,8 +22,9 @@ class User extends React.Component {
     return (
       <div className="user-body">
         <div className="user-banner">
-          <img src={user.avatar_url} className="user-port"/>
           <img src={user.banner_url} className="user-banner-image"/>
+          <img src={user.avatar_url} className="user-port"/>
+          <h2 className="user-name">{user.username}</h2>
         </div>
         <div className="main-container-left">
           <TrackIndexList tracks={tracks}/>

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :ensure_logged_in, except: :create
+  before_action :ensure_logged_in, except: [:create, :show]
 
   def show
     @user = User.find(params[:id])

@@ -1,16 +1,39 @@
-// .user-body{
-//   display: flex;
-//   flex-direction: column;
-// }
-//
-// .user-banner{
-//   width: 1240px;
-//   height: 380px;
-//
-// }
-//
-// .user-banner-image{
-//   width:1240px;
-//   object-fit: cover;
-//   position: relative;
-// }
+.user-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.user-banner{
+  width: 1240px;
+  height: 260px;
+  position: relative;
+  align-items: center;
+
+}
+
+.user-banner-image{
+  object-fit: cover;
+  position: relative;
+  width: 1240px;
+  height: 260px;
+}
+
+.user-port{
+  position: absolute;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  left: 2%;
+  top: 10%;
+}
+
+.user-name{
+  position:absolute;
+  background: black;
+  color: white;
+  top: 10%;
+  left: 20%;
+  padding: 8px;
+  opacity: 0.8;
+}

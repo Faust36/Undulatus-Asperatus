@@ -22,6 +22,7 @@ class Track extends React.Component {
       <div className="track-body">
         <div className="track-banner">
           <img className="track-art"src={this.props.track.artwork_url}/>
+          <h3 className="track-genre">#{this.props.track.genre}</h3>
         </div>
         <div className="main-container-left">
           <div className="track-body-artist">
