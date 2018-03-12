@@ -27,7 +27,7 @@ class User extends React.Component {
           <h2 className="user-name">{user.username}</h2>
         </div>
         <div className="main-container-left">
-          <TrackIndexList tracks={tracks}/>
+          <TrackIndexList tracks={tracks} addSong={this.props.addSong}/>
         </div>
       </div>
     );

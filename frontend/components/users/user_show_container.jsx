@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import User from './user_show';
 import {selectUserTracks} from '../../reducers/selectors';
 import { fetchUser } from '../../actions/user_actions';
+import {addSong} from '../../actions/playlist_actions';
 
 const mapStateToProps = (state, ownProps) =>{
   const user = state.entities.users[ownProps.match.params.userId] || {};
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) =>{
 
 const mapDispatchToProps = ( dispatch ) => {
   return{
-    fetchUser: (id) => dispatch(fetchUser(id))
+    fetchUser: (id) => dispatch(fetchUser(id)),
+    addSong: (track)=> dispatch(addSong(track))
   };
 };
 

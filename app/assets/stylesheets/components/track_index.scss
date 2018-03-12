@@ -17,9 +17,12 @@
 .track-list-image{
   height: auto;
   width: auto;
-  max-width: 200px;
-  max-height: 200px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
 }
+
 .track-list-title{
   text-decoration: none;
   font-size: 14px;

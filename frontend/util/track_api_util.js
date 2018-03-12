@@ -13,11 +13,14 @@ export const fetchTrack = (id) =>{
     method: 'GET'
   });
 };
-export const createTrack = (track) =>{
+export const createTrack = (formData) =>{
   return $.ajax({
     url: `/api/tracks`,
     method: 'POST',
-    data: {track}
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData
   });
 };
 

@@ -15,7 +15,7 @@ export const receiveTrack = ({track, user}) => {
   return {
     type: RECEIVE_TRACK,
     track,
-    user 
+    user
   };
 };
 
@@ -47,8 +47,8 @@ export const fetchTrack = (id) => (dispatch) => {
   );
 };
 
-export const createTrack = (track) => (dispatch) => {
-  return TrackApiUtil.createTrack(track).then(
+export const createTrack = (formData) => (dispatch) => {
+  return TrackApiUtil.createTrack(formData).then(
     (track) => dispatch(receiveTrack(track)),
     (err) => dispatch(receiveTrackErrors(err.responseJSON))
   );
