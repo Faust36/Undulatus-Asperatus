@@ -5,7 +5,6 @@ import PlaylistReducer from './playlist_reducer';
 
 const uiReducer = combineReducers({
   modal: modalReducer,
-  currentSong: CurrentSongReducer,
   playlist: PlaylistReducer
 });
 

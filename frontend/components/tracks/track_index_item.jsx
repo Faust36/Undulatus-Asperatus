@@ -2,10 +2,10 @@ import React from 'react';
 import{Link} from 'react-router-dom';
 
 
-const TrackIndexItem = ({track, addSong}) =>{
+const TrackIndexItem = ({track, addSong, receiveCurrentSong}) =>{
   function handleClick(e){
     return ()=>{
-      addSong(track)
+      receiveCurrentSong(track)
     }
   }
   return (

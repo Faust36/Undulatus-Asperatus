@@ -3,12 +3,104 @@
   background-color: #f2f2f2;
   border-top: 1px solid #cecece;
   width: 100%;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
   bottom: 0;
   position: fixed;
 }
 
 .audio-player{
   height: 48px;
+  display: flex;
+  width: 70%;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-slide{
+  width: 45%;
+  background: #cecece;
+  height: 1px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.progress-range{
+  width: 0;
+  background: #f50;
+  height: 1px;
+}
+
+.song-info-box{
+  display: flex;
+  margin:auto;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.art-thumb{
+  object-fit: cover;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+}
+
+.song-info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.info1{
+  color: #999;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.info2{
+  font-size: 12px;
+  color: #666;
+  height: 13px;
+}
+
+.play, .pause{
+  width:24px;
+  height: 100%;
+  border: 0;
+  margin-left: 12px;
+}
+.play-image, .pause-image{
+  height: 48px;
+  width: 24px;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
+
+.c-time{
+  color:#f50;
+  margin-left: 50px;
+  font-size: 14px;
+}
+.f-time{
+  margin-right: 50px;
+    font-size: 14px;
+}
+
+.loop-image{
+  height: 48px;
+  width: 24px;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  position: relative;
+}
+.loop{
+  width:24px;
+  height: 100%;
+  border: 0;
+}
+.loop:focus{
+  
+}
+button:focus{
+  outline: 0;
 }
