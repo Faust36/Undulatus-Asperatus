@@ -16,9 +16,6 @@ class User extends React.Component {
 
   render(){
     const {user, tracks, currentUser} = this.props;
-
-
-
     return (
       <div className="user-body">
         <div className="user-banner">
@@ -27,7 +24,13 @@ class User extends React.Component {
           <h2 className="user-name">{user.username}</h2>
         </div>
         <div className="main-container-left">
-          <TrackIndexList tracks={tracks} addSong={this.props.addSong} receiveCurrentSong={this.props.receiveCurrentSong}/>
+          <TrackIndexList
+            tracks={tracks}
+            addSong={this.props.addSong}
+            receiveCurrentSong={this.props.receiveCurrentSong}
+            play={this.props.play}
+            pause={this.props.pause}
+          />
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import {merge} from 'lodash';
 import {RECEIVE_ALL_USERS, RECEIVE_USER} from '../actions/user_actions';
 import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
-import { RECEIVE_TRACK } from '../actions/track_actions';
+import { RECEIVE_TRACK, CREATE_TRACK } from '../actions/track_actions';
 
 const userReducer = (state={}, action) =>{
   switch(action.type){
@@ -12,6 +12,10 @@ const userReducer = (state={}, action) =>{
       return merge({}, state, {[action.user.id]:action.user});
     case RECEIVE_CURRENT_USER:
       return merge({}, state, {[action.user.id]: action.user});
+    case CREATE_TRACK:
+      let newUser = state[action.track.artist_id]
+      newUser.trackIds.push(action.track.id)
+      return merge({}, state, {[newUser.id]: newUser} )
     default:
       return state;
   }

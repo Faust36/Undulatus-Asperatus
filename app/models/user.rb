@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_many :tracks, foreign_key: :artist_id
 
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
+
+  has_many :commented_tracks, through: :comments
+
   after_initialize :ensure_session_token
 
   has_attached_file :avatar, default_url: "user_avatar.jpg"

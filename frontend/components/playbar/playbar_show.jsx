@@ -5,8 +5,6 @@ class Playbar extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      currentSong: this.props.currentSong,
-      isPlaying: this.props.playlist.length === 0 ? true : false,
       haveMetadata: false,
       playlist: this.props.playlist
     }
@@ -22,28 +20,24 @@ class Playbar extends React.Component {
     this.loopColor = this.loopColor.bind(this)
   }
 
-  componentDidMount(){
-    if(this.props.playlist.length !== 0){
-      this.props.removeFirstSong()
-    }
-  }
+
 
   nextSong(){
     if(this.props.playlist.length !== 0){
       this.props.removeFirstSong()
       this.setState({ haveMetadata: false });
-      this.setState({currentSong:this.props.playlist[0]})
+      this.receiveCurrentSong(this.props.playlist[0])
     }else{
       this.setState({ haveMetadata: false });
       this.props.removeCurrentSong()
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.playlist.length !== nextProps.playlist.length){
-      this.setState({currentSong:nextProps.playlist[0], isPlaying: true})
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if(this.props.playlist.length !== nextProps.playlist.length){
+  //     this.setState({currentSong:nextProps.playlist[0], isPlaying: true})
+  //   }
+  // }
 
   setVol(e){
     this.song.volume = (e.currentTarget.value/100)
@@ -51,7 +45,7 @@ class Playbar extends React.Component {
 
 
   playOrPause(){
-    if(this.state.isPlaying === false){
+    if(this.props.isPlaying === false){
       return(
         <button className="play" onClick={this.togglePlay}>
           <img src={window.play} className="play-image"/>
@@ -65,11 +59,11 @@ class Playbar extends React.Component {
   }
 
   togglePlay(){
-    if(this.state.isPlaying === false){
-      this.setState({isPlaying: true});
+    if(this.props.isPlaying === false){
+      this.props.play();
       this.song.play();
     }else{
-      this.setState({isPlaying: false});
+      this.props.pause()
       this.song.pause()
     }
   }
@@ -146,12 +140,12 @@ class Playbar extends React.Component {
   }
 
   render(){
-    if(!this.state.currentSong){
+    if(!this.props.currentSong){
       return null
     }
     const song =
       <audio
-        src={this.state.currentSong.song_url}
+        src={this.props.currentSong.song_url}
         ref={el => {this.song = el;}}
         onLoadedMetadata={this.updateMetadata}
         onTimeUpdate={() => {this.setState({ currentTime: this.song.currentTime })}}
@@ -180,11 +174,11 @@ class Playbar extends React.Component {
         </div>
         <div className="song-info-box">
           <div>
-            <img src={this.state.currentSong.artwork_url} className="art-thumb"/>
+            <img src={this.props.currentSong.artwork_url} className="art-thumb"/>
           </div>
           <div className="song-info">
-            <div className='info1'>{this.state.currentSong.title}</div>
-            <div className='info2'>{this.state.currentSong.genre}</div>
+            <div className='info1'>{this.props.currentSong.title}</div>
+            <div className='info2'>{this.props.currentSong.genre}</div>
           </div>
         </div>
       </footer>

@@ -11,7 +11,13 @@ class TrackIndex extends React.Component {
   render(){
     return(
       <div className="main-container-left">
-        <TrackIndexList tracks={this.props.tracks} addSong={this.props.addSong} receiveCurrentSong={this.props.receiveCurrentSong}/>
+        <TrackIndexList
+          tracks={this.props.tracks}
+          addSong={this.props.addSong}
+          receiveCurrentSong={this.props.receiveCurrentSong}
+          play={this.props.play}
+          pause={this.props.pause}
+        />
       </div>
     );
   }

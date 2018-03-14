@@ -6,6 +6,13 @@ class Track < ApplicationRecord
   class_name: 'User',
   primary_key: :id
 
+  has_many :comments,
+  dependent: :destroy
+
+  has_many :comment_authors,
+  through: :comments
+
+
   has_attached_file :artwork, styles:{medium:"340x340",thumb: "172.97x172.97"} ,default_url: "giraffe.jpg"
   validates_attachment_content_type :artwork, content_type: /\Aimage\/.*\z/
 

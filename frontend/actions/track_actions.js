@@ -3,6 +3,7 @@ export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
+export const CREATE_TRACK = 'CREATE_TRACK';
 
 export const receiveAllTracks = (tracks) =>{
   return {
@@ -11,11 +12,21 @@ export const receiveAllTracks = (tracks) =>{
   };
 };
 
-export const receiveTrack = ({track, user}) => {
+export const newTrack = ({track, user, comments}) =>{
+  return{
+    type: CREATE_TRACK,
+    track,
+    user,
+    comments
+  }
+}
+
+export const receiveTrack = ({track, user, comments}) => {
   return {
     type: RECEIVE_TRACK,
     track,
-    user
+    user,
+    comments
   };
 };
 
@@ -49,7 +60,7 @@ export const fetchTrack = (id) => (dispatch) => {
 
 export const createTrack = (formData) => (dispatch) => {
   return TrackApiUtil.createTrack(formData).then(
-    (track) => dispatch(receiveTrack(track)),
+    (payload) => dispatch(newTrack(payload)),
     (err) => dispatch(receiveTrackErrors(err.responseJSON))
   );
 };

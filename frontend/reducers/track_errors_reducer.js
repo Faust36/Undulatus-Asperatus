@@ -14,7 +14,7 @@ const trackErrorsReducer = (state = [], action) =>{
     case REMOVE_TRACK:
       return [];
     case RECEIVE_TRACK_ERRORS:
-      return action.errors;
+      return [action.errors] || [];
     default:
       return state;
   }

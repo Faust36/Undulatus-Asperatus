@@ -5,15 +5,19 @@ import {
   addSong,
   clearPlaylist,
   removeCurrentSong,
-  removeFirstSong} from '../../actions/playlist_actions';
+  removeFirstSong,
+  play,
+  pause} from '../../actions/playlist_actions';
 
 
 const mapStateToProps = (state) =>{
-  const currentSong = state.ui.playlist[0] ? state.ui.playlist[0] : null;
+  const currentSong = state.ui.currentSong 
   const playlist = state.ui.playlist || [];
+  const isPlaying = state.ui.isPlaying
   return {
     currentSong,
-    playlist
+    playlist,
+    isPlaying
   }
 }
 
@@ -23,7 +27,9 @@ const mapDispatchToProps = (dispatch) =>{
     addSong: (track) => dispatch(addSong(track)),
     clearPlaylist: () => dispatch(clearPlaylist()),
     removeCurrentSong: () => dispatch(removeCurrentSong()),
-    removeFirstSong: () => dispatch(removeFirstSong())
+    removeFirstSong: () => dispatch(removeFirstSong()),
+    play: () => dispatch(play()),
+    pause: () => dispatch(pause())
   }
 }
 

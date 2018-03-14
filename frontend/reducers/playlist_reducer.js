@@ -7,9 +7,9 @@ import {
   const PlaylistReducer = (state = [], action) =>{
     Object.freeze(state)
     switch(action.type){
-      case RECEIVE_CURRENT_SONG:
+      case ADD_SONG:
         let newState = state.slice();
-        newState.unshift(action.track)
+        newState.push(action.track)
         return newState;
       case REMOVE_FIRST_SONG:
         let neoState = state.slice();
