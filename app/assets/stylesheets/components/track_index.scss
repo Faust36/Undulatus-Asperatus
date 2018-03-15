@@ -12,6 +12,7 @@
 .track-list-items{
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .track-list-image{
@@ -21,6 +22,9 @@
   height: 172.97px;
   object-fit: cover;
   cursor: pointer;
+}
+.track-list-image:hover{
+  mix-blend-mode: hard-light;
 }
 
 .track-list-title{
@@ -33,4 +37,24 @@
 .track-list-genre{
   font-weight: 100;
   color: #999;
+}
+
+// .art-tile{
+//   position: relative;
+//   top: 0;
+//   left: 0;
+// }
+
+// .play-button-hover{
+//   position: absolute;
+// }
+.play-button-hover:hover{
+  background-image: image-url("orange_play.png");
+  background-size: contain;
+}
+
+.pause-button-hover:hover{
+  background-image: image-url("orange_pause.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

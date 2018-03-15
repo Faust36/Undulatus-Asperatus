@@ -5,11 +5,10 @@ class TrackForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      title: '',
-      genre: '',
-      imageFile: null,
-      imageUrl: null,
-      songFile: null
+      id: this.props.track? this.props.track.id : undefined,
+      title: this.props.track ? this.props.track.title : '',
+      genre: this.props.track ? this.props.track.genre : '',
+      imageUrl: this.props.track ? this.props.track.artwork_url : null,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateSongFile = this.updateSongFile.bind(this);
@@ -21,9 +20,13 @@ class TrackForm extends React.Component {
     var formData = new FormData();
     formData.append("track[title]", this.state.title)
     formData.append("track[genre]", this.state.genre)
-    formData.append("track[artwork]", this.state.imageFile)
-    formData.append("track[song]", this.state.songFile)
-    this.props.submitForm(formData).then(this.props.closeModal)
+    if(this.state.imageFile){
+      formData.append("track[artwork]", this.state.imageFile)
+    }
+    if(this.state.songFile){
+      formData.append("track[song]", this.state.songFile)
+    }
+    this.props.submitForm({formData, id:this.state.id}).then(this.props.closeModal)
   }
 
   update(field){
@@ -72,7 +75,7 @@ class TrackForm extends React.Component {
     return(
     <div className="track-form-container">
       <button onClick={this.props.closeModal} className="close-x">X</button>
-      <h2 className='track-form-header'>Upload a Track</h2>
+      <h2 className='track-form-header'>{this.props.formType}</h2>
       <br/>
       {this.errors()}
       <form className="track-form" onSubmit={this.handleSubmit}>

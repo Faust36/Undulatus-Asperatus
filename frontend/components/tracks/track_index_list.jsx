@@ -1,4 +1,4 @@
-import TrackIndexItem from './track_index_item';
+import TrackIndexItem from './track_index_item_container';
 import React from 'react';
 
 const TrackIndexList = (props) =>{
@@ -7,10 +7,6 @@ const TrackIndexList = (props) =>{
       <TrackIndexItem
         key={track.id}
         track={track}
-        addSong={props.addSong}
-        receiveCurrentSong={props.receiveCurrentSong}
-        play={this.props.play}
-        pause={this.props.play}
         />);
   });
     return (

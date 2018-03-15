@@ -4,6 +4,7 @@
   border-top: 1px solid #cecece;
   width: 100%;
   align-items: center;
+  align-content: center;
   bottom: 0;
   position: fixed;
 }
@@ -11,25 +12,23 @@
 .audio-player{
   height: 48px;
   display: flex;
-  width: 70%;
+  width: 75%;
   align-content: center;
   align-items: center;
   justify-content: center;
 }
 
-.progress-slide{
-  width: 45%;
-  background: #cecece;
-  height: 1px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.progress-range{
-  width: 0;
-  background: #f50;
-  height: 1px;
-}
+// .progress-slide{
+//   width: 45%;
+//   background: #cecece;
+//   height: 1px;
+// }
+//
+// .progress-range{
+//   width: 0;
+//   background: #f50;
+//   height: 1px;
+// }
 
 .song-info-box{
   display: flex;
@@ -63,18 +62,41 @@
   height: 13px;
 }
 
-.play, .pause{
-  width:24px;
+
+.play{
+  width:48px;
+  height: 100%;
+  border: 0;
+  margin-left: 20px;
+  background-image: image-url("play.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+.play:hover{
+  cursor: pointer;
+}
+.pause:hover{
+  cursor: pointer;
+}
+.loop:hover{
+  cursor: pointer;
+}
+.volume-bar:hover{
+  cursor: pointer;
+}
+.pause{
+  width:48px;
   height: 100%;
   border: 0;
   margin-left: 12px;
-}
-.play-image, .pause-image{
-  height: 48px;
-  width: 24px;
+  background-image: image-url("pause.png");
+  background-size:  contain;
+  background-repeat: no-repeat;
   mix-blend-mode: multiply;
-  object-fit: contain;
+  box-sizing: border-box;
 }
+
 
 .c-time{
   color:#f50;
@@ -86,21 +108,65 @@
     font-size: 14px;
 }
 
-.loop-image{
-  height: 48px;
-  width: 24px;
-  mix-blend-mode: multiply;
-  object-fit: contain;
-  position: relative;
-}
 .loop{
-  width:24px;
+  width:48px;
   height: 100%;
   border: 0;
+  margin-left: 12px;
+  background-image: image-url("repeat.png");
+  background-size:  contain;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
 }
-.loop:focus{
-  
+
+.volume-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: 100%;
 }
+
+.volume-image{
+  background-image: image-url("sound.png");
+  display: inline-block;
+  position: relative;
+  width:48px;
+  height: 100%;
+  border: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+}
+
+.volume-bar{
+  display: none;
+  position: absolute;
+  background: #f2f2f2;
+  border: 1px solid #cecece;
+  left: -80%;
+
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 5px 0 0 5px;
+}
+
+
+.volume-container:hover .volume-bar{
+  display: inline-block;
+  bottom: 200%;
+  height: 30px;
+  width: 120px;
+  transform: rotate(-90deg);
+  transition: all 0.4s linear;
+  background: #f2f2f2;
+}
+
 button:focus{
   outline: 0;
+}
+
+.progress-bar{
+  margin: 0 5px;
+  width: 10%;
 }

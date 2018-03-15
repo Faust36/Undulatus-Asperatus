@@ -13,11 +13,14 @@ class Playbar extends React.Component {
     this.setVol = this.setVol.bind(this)
     this.updateMetadata = this.updateMetadata.bind(this)
     this.showDuration = this.showDuration.bind(this)
-    this.incrementProgress = this.incrementProgress.bind(this)
+    // this.incrementProgress = this.incrementProgress.bind(this)
     this.currentTime = this.currentTime.bind(this)
     this.nextSong = this.nextSong.bind(this)
     this.handleLoop = this.handleLoop.bind(this)
     this.loopColor = this.loopColor.bind(this)
+    this.currentTimeSec = this.currentTimeSec.bind(this)
+    this.determineMax = this.determineMax.bind(this)
+    this.setTime = this.setTime.bind(this)
   }
 
 
@@ -42,19 +45,20 @@ class Playbar extends React.Component {
   setVol(e){
     this.song.volume = (e.currentTarget.value/100)
   }
+  setTime(e){
+    this.song.currentTime = (e.currentTarget.value)
+  }
 
 
   playOrPause(){
     if(this.props.isPlaying === false){
       return(
-        <button className="play" onClick={this.togglePlay}>
-          <img src={window.play} className="play-image"/>
-        </button>)
+        <div className="play" onClick={this.togglePlay}>
+        </div>)
     }else{
       return(
-        <button className="pause" onClick={this.togglePlay}>
-          <img src={window.pause} className="pause-image"/>
-        </button>)
+        <div className="pause" onClick={this.togglePlay}>
+        </div>)
     }
   }
 
@@ -103,16 +107,30 @@ class Playbar extends React.Component {
       return '00:00'
     }
   }
-  incrementProgress(){
+  // incrementProgress(){
+  //   if(this.song){
+  //     let percent = (this.state.currentTime/this.song.duration) * 100
+  //     return{
+  //       "width": `${percent}%`
+  //     }
+  //   }else{
+  //     return{
+  //       width:0
+  //     }
+  //   }
+  // }
+  determineMax(){
     if(this.song){
-      let percent = (this.state.currentTime/this.song.duration) * 100
-      return{
-        "width": `${percent}%`
-      }
+      return this.song.duration
     }else{
-      return{
-        width:0
-      }
+      return 0
+    }
+  }
+  currentTimeSec(){
+    if(this.song){
+      return this.song.currentTime
+    }else{
+      return 0
     }
   }
 
@@ -143,6 +161,11 @@ class Playbar extends React.Component {
     if(!this.props.currentSong){
       return null
     }
+    if(this.props.isPlaying === false){
+      this.song.pause()
+    }else if (this.state.haveMetadata && this.props.isPlaying === true){
+      this.song.play()
+    }
     const song =
       <audio
         src={this.props.currentSong.song_url}
@@ -158,19 +181,27 @@ class Playbar extends React.Component {
         {song}
         <div className="audio-player">
           {this.playOrPause()}
-          <button className="loop" style={this.loopColor()}onClick={this.handleLoop} ref={el=>{this.loop = el}}>
-            <img src={window.repeat} className="loop-image"/>
-          </button>
-          <div className="c-time">{ this.currentTime() }</div>
-          <div className='progress-slide'>
-            <div className='progress-range' style={this.incrementProgress()} ref={el=>{this.range = el}}></div>
+          <div className="loop" style={this.loopColor()}onClick={this.handleLoop} ref={el=>{this.loop = el}}>
           </div>
-          <div className='f-time'>{ this.showDuration() }</div>
+          <div className="c-time">{ this.currentTime() }</div>
           <input
-            className="volume-bar"
-            type='range'
-            onChange={this.setVol}
+            className='progress-bar'
+            type="range"
+            min="0"
+            step="0.001"
+            max={this.determineMax()}
+            value={this.currentTimeSec()}
+            onChange={this.setTime}
           />
+          <div className='f-time'>{ this.showDuration() }</div>
+          <div className="volume-container">
+            <input
+              className="volume-bar"
+              type='range'
+              onChange={this.setVol}
+              />
+            <div className='volume-image'></div>
+          </div>
         </div>
         <div className="song-info-box">
           <div>

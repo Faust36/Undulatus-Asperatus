@@ -26,10 +26,6 @@ class User extends React.Component {
         <div className="main-container-left">
           <TrackIndexList
             tracks={tracks}
-            addSong={this.props.addSong}
-            receiveCurrentSong={this.props.receiveCurrentSong}
-            play={this.props.play}
-            pause={this.props.pause}
           />
         </div>
       </div>

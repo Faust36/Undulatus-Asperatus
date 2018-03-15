@@ -30,10 +30,10 @@ export const receiveTrack = ({track, user, comments}) => {
   };
 };
 
-export const removeTrack = ({id}) => {
+export const removeTrack = ({track}) => {
   return{
     type: REMOVE_TRACK,
-    trackId: id
+    track
   };
 };
 
@@ -65,9 +65,9 @@ export const createTrack = (formData) => (dispatch) => {
   );
 };
 
-export const updateTrack = (track) => (dispatch) => {
-  return TrackApiUtil.createTrack(track).then(
-    (track) => dispatch(receiveTrack(track)),
+export const updateTrack = (formData) => (dispatch) => {
+  return TrackApiUtil.updateTrack(formData).then(
+    (payload) => dispatch(receiveTrack(payload)),
     (err) => dispatch(receiveTrackErrors(err.responseJSON))
   );
 };

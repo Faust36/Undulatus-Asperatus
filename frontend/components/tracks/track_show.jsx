@@ -2,9 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CommentShow from '../comments/comment_show';
 import CommentForm from '../comments/comment_form';
+import EditTrackFormContainer from './edit_track_form_container';
+
 
 class Track extends React.Component {
-
+  constructor(props){
+    super(props)
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.ownerButtons = this.ownerButtons.bind(this)
+  }
 
   componentDidMount(){
     this.props.fetchTrack(this.props.match.params.trackId);
@@ -13,6 +20,28 @@ class Track extends React.Component {
   componentWillReceiveProps(nextProps){
     if(this.props.match.params.trackId !== nextProps.match.params.trackId){
       this.props.fetchTrack(nextProps.match.params.trackId);
+    }
+  }
+
+  handleEdit(){
+    this.props.openModal(<EditTrackFormContainer  trackId={this.props.track.id}/>)
+  }
+
+  handleDelete(){
+    this.props.deleteTrack(this.props.track.id)
+    this.props.history.push(`/users/${this.props.currentUser.id}`)
+  }
+
+  ownerButtons(){
+    if(this.props.artist.id === this.props.currentUser.id){
+      return(
+        <div>
+          <div className="edit-button" onClick={() => {this.props.openModal(<EditTrackFormContainer  trackId={this.props.track.id}/>)}}>Edit</div>
+          <div className="delete-button" onClick={this.handleDelete}>Delete</div>
+        </div>
+      )
+    }else{
+      return null;
     }
   }
 
@@ -41,7 +70,8 @@ class Track extends React.Component {
             <Link to={`/users/${this.props.artist.id}`} style={{textDecoration:'none', color:'black'}}>
               <img className="artist-port" src={this.props.artist.avatar_url}/>
               <h4 className="artist-name">{this.props.artist.username}</h4>
-          </Link>
+            </Link>
+            {this.ownerButtons()}
           </div>
           <div className='comment-list-container'>
             <div className="comment-list-header">

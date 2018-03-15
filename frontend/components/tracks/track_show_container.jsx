@@ -3,6 +3,7 @@ import { fetchTrack, deleteTrack } from '../../actions/track_actions';
 import Track from './track_show';
 import {createComment, deleteComment} from '../../actions/comment_actions';
 import {selectTrackComments} from '../../reducers/selectors';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps =(state, ownProps) =>{
   const track = state.entities.tracks[ownProps.match.params.trackId] || {};
@@ -22,7 +23,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchTrack: (id) => dispatch(fetchTrack(id)),
     deleteTrack: (id) => dispatch(deleteTrack(id)),
     createComment: (comment) => dispatch(createComment(comment)),
-    deleteComment: (id) => dispatch(deleteComment(id))
+    deleteComment: (id) => dispatch(deleteComment(id)),
+    openModal: (modal) => dispatch(openModal(modal))
   };
 };
 

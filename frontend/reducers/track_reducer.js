@@ -15,7 +15,6 @@ const trackReducer = (state={}, action)=>{
   switch(action.type){
     case RECEIVE_CURRENT_USER:
     case RECEIVE_USER:
-    debugger
       return merge({}, state, action.tracks);
     case RECEIVE_ALL_TRACKS:
       return merge({}, state, action.tracks);
@@ -24,7 +23,7 @@ const trackReducer = (state={}, action)=>{
       return merge({}, state, {[action.track.id]: action.track});
     case REMOVE_TRACK:
       let newState = merge({}, state);
-      delete newState[action.trackId];
+      delete newState[action.track.id];
       return newState;
     case RECEIVE_COMMENT:
       let newTrack = state[action.comment.track_id]

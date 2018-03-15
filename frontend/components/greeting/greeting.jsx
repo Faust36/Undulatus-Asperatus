@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import LoginFormContainer from '../session/login_form_container';
+import SignupFormContainer from '../session/signup_form_container';
+import NewTrackFormContainer from '../tracks/new_track_form_container';
 
 const Greeting = ({currentUser, logout, openModal}) =>{
 
@@ -9,12 +11,12 @@ const Greeting = ({currentUser, logout, openModal}) =>{
       <nav className='session-nav'>
         <button
           className="login-button"
-          onClick={() => openModal('login')}>
+          onClick={() => openModal(<LoginFormContainer/>)}>
           Login
         </button>
         <button
           className="nav-button-orange"
-          onClick={() => openModal('signup')}>
+          onClick={() => openModal(<SignupFormContainer/>)}>
           Signup
         </button>
       </nav>
@@ -25,7 +27,7 @@ const Greeting = ({currentUser, logout, openModal}) =>{
     return (
       <nav className="session-nav">
         <button
-          onClick={()=> openModal('upload')}
+          onClick={()=> openModal(<NewTrackFormContainer/>)}
           className='upload-button'>Upload
         </button>
         <Link className="user-link"style={{textDecoration:'none', color:'black'}} to={`/users/${currentUser.id}`}>

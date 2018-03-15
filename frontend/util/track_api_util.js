@@ -13,7 +13,7 @@ export const fetchTrack = (id) =>{
     method: 'GET'
   });
 };
-export const createTrack = (formData) =>{
+export const createTrack = ({formData}) =>{
   return $.ajax({
     url: `/api/tracks`,
     method: 'POST',
@@ -24,11 +24,14 @@ export const createTrack = (formData) =>{
   });
 };
 
-export const updateTrack = (track) => {
+export const updateTrack = ({formData, id}) => {
   return $.ajax({
-    url: `/api/tracks/${track.id}`,
+    url: `/api/tracks/${id}`,
     method: 'PATCH',
-    data: {track}
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData
   });
 };
 

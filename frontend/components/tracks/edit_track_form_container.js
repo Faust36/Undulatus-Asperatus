@@ -1,20 +1,22 @@
 import {connect} from 'react-redux';
-import { createTrack } from '../../actions/track_actions';
+import { updateTrack } from '../../actions/track_actions';
 import TrackForm from './track_form';
 import { clearErrors } from '../../actions/errors_actions';
 import { closeModal } from '../../actions/modal_actions';
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = (state, ownProps) =>{
+  const track = state.entities.tracks[ownProps.trackId] || null
+  const errors = state.errors.tracks
   return {
-    formType: 'Upload a Track',
-    errors: state.errors.tracks
-  };
-};
+    formType: 'Edit This Track',
+    track,
+    errors
+  }
+}
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    submitForm: (formData) => dispatch(createTrack(formData)),
+    submitForm: (formData) => dispatch(updateTrack(formData)),
     clearErrors: () => dispatch(clearErrors()),
     closeModal: () => dispatch(closeModal())
   };

@@ -13,10 +13,6 @@ class TrackIndex extends React.Component {
       <div className="main-container-left">
         <TrackIndexList
           tracks={this.props.tracks}
-          addSong={this.props.addSong}
-          receiveCurrentSong={this.props.receiveCurrentSong}
-          play={this.props.play}
-          pause={this.props.pause}
         />
       </div>
     );
