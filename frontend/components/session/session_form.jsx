@@ -76,6 +76,12 @@ class SessionForm extends React.Component{
           <h2>or</h2>
           <br/>
           {this.props.otherForm}
+          <br/>
+          <button
+            className="other-form"
+            onClick={()=>(this.props.submitForm({username:'IceKing', password: 'cakeandfiona'}).then(this.props.closeModal))}
+          >Guest Login
+        </button>
         </div>
       </div>
     );
