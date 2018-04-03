@@ -30,6 +30,7 @@ const App = () =>{
         <Route exact path='/' component={TrackIndexContainer}/>
         <Route path='/tracks/:trackId' component={TrackShowContainer}/>
         <Route path='/users/:userId' component={UserShowContainer}/>
+        <div className='main-container-left'></div>
       </div>
       <PlaybarContainer/>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner = (props)=>{
 
-  if(!props.banner && !props.currentUser){
+  if(!props.banner){
     return (
       <img className="banner" src={window.banner}/>
     );

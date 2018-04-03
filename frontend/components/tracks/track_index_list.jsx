@@ -9,11 +9,20 @@ const TrackIndexList = (props) =>{
         track={track}
         />);
   });
+
+  if(props.style === 'scroll'){
     return (
-        <div className="scrolling-wrapper">
-          {tracks}
-        </div>
+      <div className="scrolling-wrapper">
+        {tracks}
+      </div>
     );
+  }else{
+    return(
+      <div>
+        {tracks}
+      </div>
+    )
+  }
 };
 
 export default TrackIndexList;

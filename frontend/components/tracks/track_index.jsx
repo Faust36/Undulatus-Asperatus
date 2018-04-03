@@ -12,6 +12,7 @@ class TrackIndex extends React.Component {
     return(
       <div className="main-container-left">
         <TrackIndexList
+          style='list'
           tracks={this.props.tracks}
         />
       </div>

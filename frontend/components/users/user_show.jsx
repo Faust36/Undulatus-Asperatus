@@ -25,6 +25,7 @@ class User extends React.Component {
         </div>
         <div className="main-container-left">
           <TrackIndexList
+            style='scroll'
             tracks={tracks}
           />
         </div>
