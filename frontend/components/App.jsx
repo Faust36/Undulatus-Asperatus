@@ -18,6 +18,9 @@ const App = () =>{
         <nav className="main-nav">
           <div className="header-left">
             <div className="header-logo"><Link to='/'><img className='header-logo-image'src={window.logo}/></Link></div>
+              <div className="info"><a href="http://github.com/Faust36" ><i className="fab fa-github fa-2x"></i></a></div>
+              <div className="info"><a href="https://www.linkedin.com/in/fishj/" ><i className="fab fa-linkedin fa-2x"></i></a></div>
+              <div className="info"><a href="mailto:jonathanxfish@gmail.com" ><i className="far fa-envelope fa-2x"></i></a></div>
           </div>
           <div className="header-right">
             <GreetingContainer/>
@@ -26,11 +29,14 @@ const App = () =>{
       </header>
 
       <div className="main-container">
-        <Route exact path='/' component={BannerContainer}/>
-        <Route exact path='/' component={TrackIndexContainer}/>
-        <Route path='/tracks/:trackId' component={TrackShowContainer}/>
-        <Route path='/users/:userId' component={UserShowContainer}/>
-        <div className='main-container-left'></div>
+        <div>
+          <Route exact path='/' component={BannerContainer}/>
+        </div>
+        <div className='main-body'>
+          <Route exact path='/' component={TrackIndexContainer}/>
+          <Route path='/tracks/:trackId' component={TrackShowContainer}/>
+          <Route path='/users/:userId' component={UserShowContainer}/>
+        </div>
       </div>
       <PlaybarContainer/>
     </div>

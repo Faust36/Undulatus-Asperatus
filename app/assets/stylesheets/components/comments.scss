@@ -63,7 +63,9 @@
   padding: 10px 10px 10px 0;
 
 }
-
+.edit-button{
+  margin-bottom: 30px;
+}
 
 
 .comment-image{
@@ -83,4 +85,8 @@
   height: 20px;
   width: 20px;
   object-fit: contain;
+}
+
+.trash-button:hover{
+  cursor: pointer;
 }

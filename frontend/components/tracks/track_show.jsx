@@ -36,8 +36,8 @@ class Track extends React.Component {
     if(this.props.artist.id === this.props.currentUser.id){
       return(
         <div>
-          <div className="edit-button" onClick={() => {this.props.openModal(<EditTrackFormContainer  trackId={this.props.track.id}/>)}}>Edit</div>
-          <div className="delete-button" onClick={this.handleDelete}>Delete</div>
+          <div className="edit-button nav-button-orange" onClick={() => {this.props.openModal(<EditTrackFormContainer  trackId={this.props.track.id}/>)}}>Edit</div>
+          <div className="delete-button nav-button-orange" onClick={this.handleDelete}>Delete</div>
         </div>
       )
     }else{
