@@ -24,7 +24,7 @@ plugins = plugins.concat(
 // include plugins config
 module.exports = {
   context: __dirname,
-  entry: "./frontend/<name of entry file>",
+  entry: "./frontend/asperatus.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js"
