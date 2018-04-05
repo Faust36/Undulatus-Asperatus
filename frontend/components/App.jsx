@@ -20,7 +20,6 @@ const App = () =>{
             <div className="header-logo"><Link to='/'><img className='header-logo-image'src={window.logo}/></Link></div>
               <div className="info"><a href="http://github.com/Faust36" ><i className="fab fa-github fa-2x"></i></a></div>
               <div className="info"><a href="https://www.linkedin.com/in/fishj/" ><i className="fab fa-linkedin fa-2x"></i></a></div>
-              <div className="info"><a href="mailto:jonathanxfish@gmail.com" ><i className="far fa-envelope fa-2x"></i></a></div>
           </div>
           <div className="header-right">
             <GreetingContainer/>
