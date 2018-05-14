@@ -6,7 +6,8 @@ class Playbar extends React.Component {
     super(props)
     this.state = {
       haveMetadata: false,
-      playlist: this.props.playlist
+      playlist: this.props.playlist,
+      playButtonClass: 'fas fa-pause fa-lg'
     }
     this.playOrPause = this.playOrPause.bind(this)
     this.togglePlay = this.togglePlay.bind(this)
@@ -36,11 +37,6 @@ class Playbar extends React.Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if(this.props.playlist.length !== nextProps.playlist.length){
-  //     this.setState({currentSong:nextProps.playlist[0], isPlaying: true})
-  //   }
-  // }
 
   setVol(e){
     this.song.volume = (e.currentTarget.value/100)
@@ -53,12 +49,12 @@ class Playbar extends React.Component {
   playOrPause(){
     if(this.props.isPlaying === false){
       return(
-        <div className="play" onClick={this.togglePlay}>
-        </div>)
+          <i class="far fa-play-circle fa-lg"></i>
+        )
     }else{
       return(
-        <div className="pause" onClick={this.togglePlay}>
-        </div>)
+          <i class="far fa-pause-circle fa-lg"></i>
+        )
     }
   }
 
@@ -66,9 +62,11 @@ class Playbar extends React.Component {
     if(this.props.isPlaying === false){
       this.props.play();
       this.song.play();
+      this.setState({playButtonClass:"fas fa-pause fa-lg"})
     }else{
       this.props.pause()
       this.song.pause()
+      this.setState({playButtonClass:"fas fa-play fa-lg"})
     }
   }
 
@@ -107,18 +105,7 @@ class Playbar extends React.Component {
       return '00:00'
     }
   }
-  // incrementProgress(){
-  //   if(this.song){
-  //     let percent = (this.state.currentTime/this.song.duration) * 100
-  //     return{
-  //       "width": `${percent}%`
-  //     }
-  //   }else{
-  //     return{
-  //       width:0
-  //     }
-  //   }
-  // }
+
   determineMax(){
     if(this.song){
       return this.song.duration
@@ -147,11 +134,11 @@ class Playbar extends React.Component {
     if(this.state.haveMetadata){
       if(this.song.loop){
         return{
-          "backgroundColor":"orange"
+          "color":"orange"
         }
       }else{
         return{
-          "backgroundColor":"white"
+          "color":"black"
         }
       }
     }
@@ -180,8 +167,11 @@ class Playbar extends React.Component {
       <footer className="main-footer">
         {song}
         <div className="audio-player">
-          {this.playOrPause()}
+          <div className="play" onClick={this.togglePlay}>
+            <i className={this.state.playButtonClass}></i>
+          </div>
           <div className="loop" style={this.loopColor()}onClick={this.handleLoop} ref={el=>{this.loop = el}}>
+            <i className="fas fa-retweet fa-lg"></i>
           </div>
           <div className="c-time">{ this.currentTime() }</div>
           <input
@@ -200,7 +190,7 @@ class Playbar extends React.Component {
               type='range'
               onChange={this.setVol}
               />
-            <div className='volume-image'></div>
+            <div className='volume-icon'><i className="fas fa-volume-up fa-lg"></i></div>
           </div>
         </div>
         <div className="song-info-box">
